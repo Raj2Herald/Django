@@ -33,3 +33,23 @@ def view_flight_lists(request):
         'flights':list_of_flights
     }
     return render(request,'flight/flights.html',context_variable)
+
+def view_fight_form(request):
+    return render(request,'flight/flightform.html')
+
+def view_flightdata_save(request):
+    if request.method == "POST":
+        get_all = request.POST
+        get_origin = request.POST['flight_origin']
+        print(type(get_origin))
+        get_destination = request.POST['flight_destination']
+        get_duration = request.POST['flight_duration']
+        print(get_origin)
+        flight_obj = Flight(origin=get_origin,destination=get_destination,duration=get_duration)
+        flight_obj.save()
+        return HttpResponse("Record Saved")
+    else:
+        return HttpResponse("Error record saving")
+
+def view_flightdata_updateform(request):
+    return render(request,'flight/flightupdateform.html')
