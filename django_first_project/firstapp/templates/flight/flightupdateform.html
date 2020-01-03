@@ -7,11 +7,11 @@
     <title>Update Form </title>
 </head>
 <body>
-    <form method="POST" action="save">
+    <form method="POST" action="update/{{flight.id}}">
         {% csrf_token %}
-        Enter origin: <input name="flight_origin" type="text" > <br>
-        Enter destination: <input name="flight_destination" type="text" > <br>
-        Enter duration: <input name="flight_duration" type="text" > <br>
+        Update origin: <input name="flight_origin" type="text" value ={{flight.origin}}> <br>
+        Update destination: <input name="flight_destination" type="text" value={{flight.destination}}> <br>
+        Update duration: <input name="flight_duration" type="text" value={{flight.duration}}> <br>
         <input type="submit">
     </form>
 

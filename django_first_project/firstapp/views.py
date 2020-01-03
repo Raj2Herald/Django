@@ -51,5 +51,23 @@ def view_flightdata_save(request):
     else:
         return HttpResponse("Error record saving")
 
-def view_flightdata_updateform(request):
-    return render(request,'flight/flightupdateform.html')
+def view_flightdata_updateform(request,ID):
+    print(ID)
+    flight_obj = Flight.objects.get(id=ID)
+    print(flight_obj)
+    context_varible = {
+        'flight':flight_obj
+    }
+    return render(request,'flight/flightupdateform.html',context_varible)
+
+def view_update_form_data_in_db(request,ID):
+    flight_obj = Flight.objects.get(id=ID)
+    print(flight_obj)
+    fligh_form_data = request.POST
+    print(fligh_form_data)
+    flight_obj.origin = request.POST['flight_origin']
+    flight_obj.destination =request.POST['flight_destination']
+    flight_obj.duration = request.POST['flight_duration']
+    flight_obj.save()
+
+    return HttpResponse("Record Updated!!")

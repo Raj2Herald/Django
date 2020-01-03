@@ -9,6 +9,9 @@ urlpatterns = [
     # path('flights/',view_flights_page)
     path('flightdata/',view_flight_lists),
     path('flightform/',view_fight_form),
-    path('flightform/save',view_flightdata_save)
+    path('flightform/save',view_flightdata_save),
+    path('flightdata/edit/<int:ID>',view_flightdata_updateform),
+    path('flightdata/edit/update/<int:ID>',view_update_form_data_in_db)
+
    
 ]
